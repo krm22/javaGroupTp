@@ -1,70 +1,116 @@
 import java.io.FileOutputStream;
-import java.io.IOException;
+//import java.io.IOException;
+import java.util.ArrayList;
 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+/*import com.itextpdf.text.DocumentException;*/
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfContentByte;
+/*import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPTable;*/
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Rectangle;
 
 
-public class PDFgenerator {
-	public static final String chemin = "/Users/krm22/Documents/javaGroupTp.pdf";
-	
-public static void main(String[] args) throws DocumentException, IOException
+public class PDFgenerator  {
 
-{
-	Document document = new Document();
-	
-	try
-	{
-		PdfWriter.getInstance(document,  new FileOutputStream(chemin));
+	public static Document buildDocument(ArrayList<String> list) {
+
+		Document document = new Document(PageSize.A4);
 		
-		document.open();
-		
-		//ajout du contenu
-		
-		document.add(new Paragraph("TEST generation du pdf"));
-		document.add(premierTableau());
-		
-	}catch (DocumentException de)
-	{
-		de.printStackTrace();
-	}catch (IOException ioe)
-	{
-		ioe.printStackTrace();
+		try{
+
+			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("/Users/krm22/Downloads/generatedPdf.pdf"));
+			document.open();
+	   		
+	        Font font3 = new Font(Font.FontFamily.TIMES_ROMAN, 15);
+	        Font font4 = new Font(Font.FontFamily.TIMES_ROMAN, 27,Font.BOLD);
+	        Font font5 = new Font(Font.FontFamily.TIMES_ROMAN, 20,Font.BOLD);
+	        
+	         
+	        
+	        Paragraph code = new Paragraph();
+	        code.setFont(font3);
+	        code.add("Code: " + list.get(0));
+			code.setIndentationLeft(15);
+			code.setSpacingAfter(100);
+			code.setAlignment(Element.ALIGN_LEFT);
+			document.add(code);
+			
+			Paragraph category = new Paragraph();
+			category.setFont(font3);
+			category.add("Catergorie: " + list.get(1));
+			category.setAlignment(Element.ALIGN_RIGHT);
+			category.setIndentationRight(15);
+			document.add(category);
+			
+			Paragraph name = new Paragraph();
+			name.setFont(font4);
+			name.add(list.get(1));
+			name.setAlignment(Element.ALIGN_LEFT);
+			name.setIndentationLeft(15);
+			name.setSpacingAfter(20);
+			document.add(name);
+			
+			Paragraph descriptionHeader = new Paragraph();
+			descriptionHeader.setFont(font3);
+			descriptionHeader.add("Description");
+			descriptionHeader.setAlignment(Element.ALIGN_LEFT);
+			descriptionHeader.setSpacingAfter(40);
+			descriptionHeader.setIndentationLeft(15);
+			document.add(descriptionHeader);
+			
+			Paragraph descriptionText = new Paragraph();
+			descriptionText.setFont(font5);
+			descriptionText.add(list.get(2));
+			descriptionText.setAlignment(Element.ALIGN_LEFT);
+			descriptionText.setIndentationLeft(30);
+			document.add(descriptionText);
+			
+			Paragraph amount = new Paragraph();
+			amount.setFont(font5);
+			amount.add("Montant HT : " + list.get(4));
+			amount.setAlignment(Element.ALIGN_RIGHT);
+			amount.setIndentationRight(70);
+			amount.setSpacingBefore(350);
+			document.add(amount);
+			
+			Paragraph tax = new Paragraph();
+			tax.setFont(font5);
+			tax.add("TVA : " );
+			tax.setAlignment(Element.ALIGN_RIGHT);
+			tax.setIndentationRight(141);
+			tax.setSpacingBefore(10);
+			document.add(tax);
+			
+			Paragraph ttc = new Paragraph();
+			ttc.setFont(font5);
+			ttc.add("Montant TTC: ");
+			ttc.setAlignment(Element.ALIGN_RIGHT);
+			ttc.setIndentationRight(69);
+			ttc.setSpacingBefore(10);
+			
+			document.add(ttc);
+			
+			
+			
+		    PdfContentByte canvas = writer.getDirectContent();
+			Rectangle rect = new Rectangle(	50, 241, 550, 600);
+	        rect.setBorder(Rectangle.BOX);
+	        rect.setBorderWidth(2);
+	        canvas.rectangle(rect);
+			document.close();
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+		return document ;
 	}
-	//fermeture du document
-	
-	document.close();
-}
-
-//Classe qui permet de dessiner un tableau
-
-public static PdfPTable premierTableau()
-{
-	//On créer un objet table dans lequel on intialise ça taille
-	PdfPTable table = new PdfPTable(3);
-	//On créer l'objet cellule.
-    PdfPCell cell;
-    
-    cell = new PdfPCell(new Phrase("Fusion de chaque première cellule de chaque colonne"));
-    cell.setColspan(3);
-    table.addCell(cell);
-
-    cell = new PdfPCell(new Phrase("Fusion de 2 cellules de la première colonne"));
-    cell.setRowspan(2);
-    table.addCell(cell);
-
-    //contenu du tableau.
-    table.addCell("Colonne 1; Cellule 1");
-    table.addCell("Colonne 1; Cellule 2");
-    table.addCell("Colonne 2; Cellule 1");
-    table.addCell("Colonne 2; Cellule 2");
-    
-    return table;  
-}
 
 }

@@ -4,6 +4,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="APIs/bcpkix-jdk15on-1.58.jar"/>
 	<classpathentry kind="lib" path="APIs/bcprov-jdk15on-1.58.jar"/>
+	<classpathentry kind="lib" path="APIs/core-3.3.1.jar"/>
 	<classpathentry kind="lib" path="APIs/itextpdf-5.5.12.jar"/>
+	<classpathentry kind="lib" path="APIs/javase-3.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
