@@ -6,22 +6,21 @@ import java.util.ArrayList;
 
 import com.itextpdf.text.DocumentException;
 
-public class Main{
+public class Main {
 	
 	public static void buildPDF(String csvLine) throws FileNotFoundException, DocumentException{
 		CsvReader readCsv = new CsvReader();
-		ArrayList<String> test = readCsv.csvtoArrayList(csvLine);
-		PDFgenerator pdfMaker = new PDFgenerator(test);
+		ArrayList<String> printList = readCsv.csvtoArrayList(csvLine);
+		PDFgenerator pdfMaker = new PDFgenerator(printList);
 		pdfMaker.buildDocument();
-		pdfMaker.closeDocument();
 	}
  
 	public static void main(String args[]) throws DocumentException {
 	BufferedReader buffer = null;
 	    try {
+	    		String filePath = "/Users/krm22/Documents/test.txt";
 			String csvLine;
-			buffer = new BufferedReader(new FileReader("/Users/krm22/Documents/test.txt"));
-			// How to read file in java line by line?
+			buffer = new BufferedReader(new FileReader(filePath));
 			while ((csvLine = buffer.readLine()) != null) {
 				buildPDF(csvLine);
 			}
@@ -36,10 +35,4 @@ public class Main{
 		}
 	}
 	
-	
-	
-	
-	
-	
-
 }
