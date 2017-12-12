@@ -1,24 +1,29 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
-
-import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 
 public class Main{
 	
-	public static Document buildPDF(String csvLine){
-		return PDFgenerator.buildDocument(CsvReader.CsvtoArrayList(csvLine));
+	public static void buildPDF(String csvLine) throws FileNotFoundException, DocumentException{
+		CsvReader readCsv = new CsvReader();
+		ArrayList<String> test = readCsv.csvtoArrayList(csvLine);
+		PDFgenerator pdfMaker = new PDFgenerator(test);
+		pdfMaker.buildDocument();
+		pdfMaker.closeDocument();
 	}
  
-	public static void main(String args[]) {
+	public static void main(String args[]) throws DocumentException {
 	BufferedReader buffer = null;
 	    try {
 			String csvLine;
 			buffer = new BufferedReader(new FileReader("/Users/krm22/Documents/test.txt"));
 			// How to read file in java line by line?
 			while ((csvLine = buffer.readLine()) != null) {
-				buildPDF(csvLine) ;
+				buildPDF(csvLine);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
