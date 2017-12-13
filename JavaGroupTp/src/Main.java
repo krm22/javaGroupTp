@@ -11,15 +11,15 @@ public class Main {
 	public static void buildPDF(String csvLine) throws FileNotFoundException, DocumentException{
 		CsvReader readCsv = new CsvReader();
 		ArrayList<String> printList = readCsv.csvtoArrayList(csvLine);
-		PDFgenerator pdfMaker = new PDFgenerator(printList);
+		PDFgenerator pdfMaker = new PDFgenerator(new Product(printList));
 		pdfMaker.buildDocument();
 	}
  
 	public static void main(String args[]) throws DocumentException {
-	BufferedReader buffer = null;
+	    BufferedReader buffer = null;
+	    String csvLine;
 	    try {
 	    		String filePath = "/Users/krm22/Documents/test.txt";
-			String csvLine;
 			buffer = new BufferedReader(new FileReader(filePath));
 			while ((csvLine = buffer.readLine()) != null) {
 				buildPDF(csvLine);
