@@ -9,7 +9,6 @@ import java.util.List;
 import fr.epsi.ficheproduit.entity.Product;
 
 public class CsvReader {
-
 	/**
 	 * Creates a list of {@link Product} from the input CSV file.
 	 * 
@@ -17,6 +16,7 @@ public class CsvReader {
 	 * @return
 	 */
 	public static List<Product> csvtoArrayList(File csv) {
+		
 		List<Product> products = new ArrayList<>();
 		
 		String csvLine;
@@ -31,8 +31,5 @@ public class CsvReader {
 		
 		return products;
 	}
-
-
-
 
 }

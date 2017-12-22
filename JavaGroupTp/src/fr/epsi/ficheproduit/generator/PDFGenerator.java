@@ -8,11 +8,15 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import fr.epsi.ficheproduit.entity.Product;
+import fr.epsi.ficheproduit.generator.layout.ProductPageLayout;
+import fr.epsi.ficheproduit.generator.layout.QRProductPageLayout;
 
 public class PDFGenerator {
-	
+
 	private Document document;
 	private PdfWriter writer;
+	
+	private int row = 0;
 	
 	/**
 	 * Initializes an empty PDF document with the specified file path.
@@ -50,9 +54,23 @@ public class PDFGenerator {
 			document.add(page.paraAmountHT());
 			document.add(page.paraTVA());
 			document.add(page.paraTTC());
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	public QRProductPageLayout addPage() {
+		return new QRProductPageLayout(document, writer.getDirectContent());
+	}
+	
+	public void addQrCard(QRProductPageLayout page, Product product){
+		 try{
+			page.addProduct(product, row++);
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }
+		
 	}
 	
 	/**

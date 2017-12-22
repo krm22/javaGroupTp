@@ -1,4 +1,4 @@
-package fr.epsi.ficheproduit.generator;
+package fr.epsi.ficheproduit.generator.layout;
 import java.io.FileNotFoundException;
 
 import com.itextpdf.text.DocumentException;
@@ -24,18 +24,16 @@ public class ProductPageLayout  {
 	}
 	
 	public void rectangle() throws DocumentException, FileNotFoundException {
-		Rectangle rect = new Rectangle(	50, 241, 550, 600);
+		Rectangle rect = new Rectangle(50, 241, 550, 600);
 	    rect.setBorder(Rectangle.BOX);
 	    rect.setBorderWidth(2);
 	    canvas.rectangle(rect);
-	}
-    
+	    
+	}   
 	public Paragraph paraCode() throws DocumentException {
 	    Paragraph code = new Paragraph();
         code.setFont(font3);
-		String test = new String("Code: " + product.getProductCode());
-	    System.out.println(test);
-        code.add(test);
+		code.add("Code: " + product.getProductCode());
 		code.setIndentationLeft(15);
 		code.setSpacingAfter(100);
 		code.setAlignment(Element.ALIGN_LEFT);
@@ -49,7 +47,6 @@ public class ProductPageLayout  {
 		category.add("Categorie: " + product.getProductCatergory());
 		category.setAlignment(Element.ALIGN_RIGHT);
 		category.setIndentationRight(15);
-		
 		return category; 
 	}
 	
