@@ -14,20 +14,26 @@ import fr.epsi.ficheproduit.entity.Product;
 
 public class QRCard {
 	
+	public static final int WIDTH = 275;
+	public static final int HEIGHT = 105;
+	
 	private Product product;
 	private PdfContentByte canvas;
+	private float xPosition;
 	private float yPosition;
 	
 	/**
-	 * Creates a QRCard starting at the specified yPosition.
+	 * Creates a QRCard starting at the specified (xPosition, yPosition).
 	 * 
 	 * @param product
 	 * @param canvas
+	 * @param xPosition
 	 * @param yPosition
 	 */
-	public QRCard(Product product, PdfContentByte canvas, float yPosition) {
+	public QRCard( Product product, PdfContentByte canvas, float xPosition, float yPosition) {
 		this.product = product;
 		this.canvas = canvas;
+		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 	}
 
@@ -35,16 +41,17 @@ public class QRCard {
 		Rectangle rect = new Rectangle(0,0);
 	    rect.setBorder(Rectangle.BOX);
 	    rect.setBorderWidth(2);
-	    canvas.roundRectangle(10, yPosition - 105, 275, 105, 10);
+	    canvas.roundRectangle(xPosition, yPosition - HEIGHT, WIDTH, HEIGHT, 10);
 	    canvas.rectangle(rect);
 	    
 		return rect;
 	}
 	
 	public Image qrCode() throws BadElementException {
+		
 		BarcodeQRCode qrcode = new BarcodeQRCode("http://test.com/", 1, 1, null);
         Image qrcodeImage = qrcode.getImage();
-        qrcodeImage.setAbsolutePosition(10, yPosition - 105);
+        qrcodeImage.setAbsolutePosition(xPosition, yPosition - HEIGHT);
         qrcodeImage.scaleAbsolute(new Rectangle(90, 90));
         
         return qrcodeImage;

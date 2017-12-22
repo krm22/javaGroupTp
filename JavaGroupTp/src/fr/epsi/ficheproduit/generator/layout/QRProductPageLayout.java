@@ -1,40 +1,43 @@
 package fr.epsi.ficheproduit.generator.layout;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfContentByte;
 
 import fr.epsi.ficheproduit.entity.Product;
 import fr.epsi.ficheproduit.generator.layout.element.QRCard;
 
-public class QRProductPageLayout {
-
-	private Document document;
-	private PdfContentByte canvas;
-
-	public QRProductPageLayout(Document document, PdfContentByte canvas) { 
-		this.document = document;
-		this.canvas = canvas;
-	}
+public class QRProductPageLayout extends PageLayout {
 	
-	/**
-	 * Creates a new {@link QRCard} with the {@link Product} data and at the specified row number.
-	 * 
-	 * @param product
-	 * @param row
-	 * @throws FileNotFoundException
-	 * @throws DocumentException
-	 */
-	public void addProduct(Product product, int row) throws FileNotFoundException, DocumentException {
-		float yPosition = document.getPageSize().getHeight() - row * 105;
-		QRCard qrCard = new QRCard(product, canvas, yPosition);
+	@Override
+	public void render(List<Product> products) throws FileNotFoundException, DocumentException {		
+		boolean alignLeft = false;
 		
-		document.add(qrCard.rectangle());
-		document.add(qrCard.qrCode());
+		float xPosition = 0;
+		float yPosition = 0;
+		for (int i = 0; i < products.size(); i++) {
+			if (i % 16 == 0) {
+				document.newPage();
+			}
+			
+			// Resets the alignments for each column change
+			if (i % 8 == 0) {
+				alignLeft = !alignLeft;
+				
+				if (alignLeft) {
+					xPosition = 10;
+				} else {
+					xPosition = document.getPageSize().getWidth() - (10 + QRCard.WIDTH);
+				}
+			}
+			
+			yPosition = document.getPageSize().getHeight() - (i % 8) * QRCard.HEIGHT;
+			
+			QRCard qrCard = new QRCard(products.get(i), canvas, xPosition, yPosition);
+			
+			document.add(qrCard.rectangle());
+			document.add(qrCard.qrCode());
+		}
 	}
-	
-	
-
 }

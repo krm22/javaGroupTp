@@ -8,18 +8,17 @@ import com.itextpdf.text.DocumentException;
 
 import fr.epsi.ficheproduit.entity.Product;
 import fr.epsi.ficheproduit.generator.PDFGenerator;
+import fr.epsi.ficheproduit.generator.layout.ProductPageLayout;
 import fr.epsi.ficheproduit.reader.CsvReader;
 
 public class Main {
  
 	public static void main(String args[]) throws DocumentException, FileNotFoundException {
-		PDFGenerator pdfGenerator = new PDFGenerator();
+		PDFGenerator pdfGenerator = new PDFGenerator(new ProductPageLayout());
 	    pdfGenerator.createDocument("/Users/krm22/Downloads/generatedPdf.pdf");
 		
 		List<Product> products = CsvReader.csvtoArrayList(new File("/Users/krm22/Documents/test.txt"));
-	    for (Product product : products) {
-	    		pdfGenerator.addProduct(product);
-	    }
+	    pdfGenerator.render(products);
 	    pdfGenerator.saveDocument();
 	}
 }
