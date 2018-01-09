@@ -16,7 +16,7 @@ public class QRCodeGenerator {
 	public static void main(String[] args) throws IOException, WriterException { 
 		String content = "http://test.com";
 		String filename = "/Users/krm22/Downloads/qrcode.png";
-		BufferedImage image = generate(content, 150); 
+		BufferedImage image = generate(content, 40); 
 		ImageIO.write(image, "PNG", new File(filename));
     }
 	
