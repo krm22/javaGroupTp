@@ -16,7 +16,6 @@ public class CsvReader {
 	 * @return
 	 */
 	public static List<Product> csvtoArrayList(File csv) {
-		
 		List<Product> products = new ArrayList<>();
 		
 		String csvLine;

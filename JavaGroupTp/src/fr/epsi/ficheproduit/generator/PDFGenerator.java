@@ -49,6 +49,7 @@ public class PDFGenerator {
 	 * @throws DocumentException 
 	 * @throws FileNotFoundException 
 	 */
+	
 	public void saveDocument() throws FileNotFoundException, DocumentException {		
 		document.close();
 	}

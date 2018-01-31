@@ -27,8 +27,8 @@ public class ProductPageLayout extends PageLayout {
 			document.add(paraDescriptionHeader());
 			document.add(paraDescriptionText(product));
 			document.add(paraAmountHT(product));
-			document.add(paraTVA());
-			document.add(paraTTC());
+			document.add(paraTVA(product));
+			document.add(paraTTC(product));
 		}
 	}
 
@@ -46,7 +46,6 @@ public class ProductPageLayout extends PageLayout {
 		code.setIndentationLeft(15);
 		code.setSpacingAfter(100);
 		code.setAlignment(Element.ALIGN_LEFT);
-		
 		return code;
 	}
 	
@@ -66,7 +65,6 @@ public class ProductPageLayout extends PageLayout {
 		name.setAlignment(Element.ALIGN_LEFT);
 		name.setIndentationLeft(15);
 		name.setSpacingAfter(20);
-		
 		return name;
 	}
 	
@@ -77,7 +75,6 @@ public class ProductPageLayout extends PageLayout {
 		descriptionHeader.setAlignment(Element.ALIGN_LEFT);
 		descriptionHeader.setSpacingAfter(40);
 		descriptionHeader.setIndentationLeft(15);
-		
 		return descriptionHeader;
 	}
 	
@@ -88,7 +85,6 @@ public class ProductPageLayout extends PageLayout {
 		descriptionText.add(product.getProductDescription());
 		descriptionText.setAlignment(Element.ALIGN_LEFT);
 		descriptionText.setIndentationLeft(30);
-		
 		return descriptionText;	
 	}
 	
@@ -99,30 +95,30 @@ public class ProductPageLayout extends PageLayout {
 		amount.setAlignment(Element.ALIGN_RIGHT);
 		amount.setIndentationRight(70);
 		amount.setSpacingBefore(350);
-		
 		return amount;
 	}
 	
-	public Paragraph paraTVA() throws DocumentException {
+	public Paragraph paraTVA(Product product) throws DocumentException {
 		Paragraph tax = new Paragraph();
 		tax.setFont(FONT_5);
-		tax.add("TVA : " );
+		tax.add("TVA : " + product.getTaxAmount());
 		tax.setAlignment(Element.ALIGN_RIGHT);
-		tax.setIndentationRight(141);
+		tax.setIndentationRight(80);
 		tax.setSpacingBefore(10);
-		
 		return tax;
 	} 
 
-	public Paragraph paraTTC() throws DocumentException {
+	
+	public Paragraph paraTTC(Product product) throws DocumentException {
 		Paragraph ttc = new Paragraph();
 		ttc.setFont(FONT_5);
-		ttc.add("Montant TTC: ");
+		ttc.add(String.format("Montant TTC : %.2f  ", product.getProductAmountTTC()));
 		ttc.setAlignment(Element.ALIGN_RIGHT);
-		ttc.setIndentationRight(69);
+		ttc.setIndentationRight(60);
 		ttc.setSpacingBefore(10);
-		
 		return ttc;
     }
+	
+	
 }
 

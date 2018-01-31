@@ -16,6 +16,7 @@ public class QRProductPageLayout extends PageLayout {
 
 		float xPosition = 0;
 		float yPosition = 0;
+		
 		for (int i = 0; i < products.size(); i++) {
 			if (i % 16 == 0) {
 				document.newPage();

@@ -1,18 +1,18 @@
-XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30,21
-VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32,12
+XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30.21
+VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32.12
 GF55556566;Wonder Woman DVD;L’adaptation cinéma du DC Comics;film;16,55
-XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30,21
-VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32,12
+XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30.21
+VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32.12
 GF55556566;Wonder Woman DVD;L’adaptation cinéma du DC Comics;film;16,55
-XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30,21
-VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32,12
+XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30.21
+VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32.12
 GF55556566;Wonder Woman DVD;L’adaptation cinéma du DC Comics;film;16,55
-XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30,21
-VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32,12
+XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30.21
+VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32.12
 GF55556566;Wonder Woman DVD;L’adaptation cinéma du DC Comics;film;16,55
-XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30,21
-VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32,12
+XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30.21
+VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32.12
 GF55556566;Wonder Woman DVD;L’adaptation cinéma du DC Comics;film;16,55
-XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30,21
-VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32,12
-GF55556566;Bob the builder;L’adaptation cinéma du DC Comics;film;16,55
+XV13948573;Mysterium;jeu d'enquête coopératif;jeu;30.21
+VT66556555;The Witcher 3;Incarnez un tueur de monstres et vivez son épopée !;jeu video;32.12
+GF55556566;Bob the builder;L’adaptation cinéma du DC Comics;film;16.55

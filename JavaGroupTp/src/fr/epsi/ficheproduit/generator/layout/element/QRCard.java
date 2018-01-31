@@ -18,9 +18,9 @@ public class QRCard {
 	public static final int WIDTH = 275;
 	public static final int HEIGHT = 105;
 	
-	private static final int textOffsetTop = 20;
-	private static final int textOffsetLeft = 80;
-	private static final int fontSize = 12;
+	private static final int textOffsetTop = 40;
+	private static final int textOffsetLeft = 90;
+	//private static final int fontSize = 12;
 	
 	private Product product;
 	private PdfContentByte canvas;
@@ -49,21 +49,19 @@ public class QRCard {
 	    rect.setBorderWidth(2);
 	    canvas.roundRectangle(xPosition, yPosition - HEIGHT, WIDTH, HEIGHT, 10);
 	    canvas.rectangle(rect);
-	    
-	    drawProductAttributes();
-	    
+	    drawProductAttributes();   
 	}
 	
 	private void drawProductAttributes() {
 		float y = yPosition - textOffsetTop;
 		float x = xPosition + textOffsetLeft;
 		drawText(product.getProductCode(), x, y);
-		drawText(product.getProductName(),x, y -= 18);
-		drawText(product.getProductAmountHt().toString(),x, y -= 18);
+		drawText(product.getProductName(), x, y -= 23);
+		drawText(product.getProductAmountHt() + "€ TTC", x, y -= 23);
+		drawText(product.getProductAmountTTC() + "€ HT" , x += 100, y  -= 0);
 	}
 
 	public void qrCode() throws BadElementException {
-		
 		BarcodeQRCode qrcode = new BarcodeQRCode("http://test.com/", 1, 1, null);
         Image qrcodeImage = qrcode.getImage();
         qrcodeImage.setAbsolutePosition(xPosition, yPosition - HEIGHT);
@@ -100,7 +98,7 @@ public class QRCard {
 		canvas.beginText();
 		canvas.moveText(x, y);
 		try {
-			canvas.setFontAndSize(BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 18);
+			canvas.setFontAndSize(BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 15);
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

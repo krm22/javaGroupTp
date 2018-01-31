@@ -6,7 +6,9 @@ public class Product {
 	private String productCatergory;
 	private String productName;
 	private String productDescription;
-	private String productAmountHt;
+	private double productAmountHt;
+	private static final double TAX = 1.2;
+	
 
 	public Product( 
 			String productCode,
@@ -18,7 +20,7 @@ public class Product {
 				this.productCatergory = productCatergory;
 				this.productName = productName;
 				this.productDescription = productDescription;
-				this.productAmountHt = productAmountHt;
+				this.productAmountHt = Double.parseDouble(productAmountHt);
 	}
 
 	public String getProductCode() {
@@ -53,14 +55,21 @@ public class Product {
 		return this.productDescription = productDescription;
 	}
 
-	public String getProductAmountHt() {
+	public double getProductAmountHt() {
 		return productAmountHt;
 	}
 
-	public String setProductAmountHt(String productAmountHt) {
-		return this.productAmountHt = productAmountHt;
+	public void setProductAmountHt(double productAmountHt) {
+		this.productAmountHt = productAmountHt;
 	}
 	
-
+	public double getProductAmountTTC() {
+		return this.productAmountHt * TAX;
+	}
+	
+	public String getTaxAmount(){
+		double taxPaye = getProductAmountTTC() - getProductAmountHt();
+		return String.format("%.2f" , taxPaye);
+	}
 	
  }
