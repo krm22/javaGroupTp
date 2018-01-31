@@ -57,8 +57,8 @@ public class QRCard {
 		float x = xPosition + textOffsetLeft;
 		drawText(product.getProductCode(), x, y);
 		drawText(product.getProductName(), x, y -= 23);
-		drawText(product.getProductAmountHt() + "€ TTC", x, y -= 23);
-		drawText(product.getProductAmountTTC() + "€ HT" , x += 100, y  -= 0);
+		drawText(product.getProductAmountTTC() + "€ TTC", x, y -= 23);
+		drawText(product.getProductAmountHt() + "€ HT" , x += 100, y  -= 0);
 	}
 
 	public void qrCode() throws BadElementException {
