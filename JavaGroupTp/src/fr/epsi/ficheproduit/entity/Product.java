@@ -7,8 +7,9 @@ public class Product {
 	private String productName;
 	private String productDescription;
 	private double productAmountHt;
-	private static final double TAX = 1.2;
+	private double tax = 1.2;
 	
+
 
 	public Product( 
 			String productCode,
@@ -64,12 +65,23 @@ public class Product {
 	}
 	
 	public double getProductAmountTTC() {
-		return this.productAmountHt * TAX;
+		return this.productAmountHt * tax;
 	}
 	
 	public String getTaxAmount(){
 		double taxPaye = getProductAmountTTC() - getProductAmountHt();
 		return String.format("%.2f" , taxPaye);
 	}
+	
+	public double getTax() {
+		return tax;
+	}
+	
+	public void setTax(String taxPercent){
+		double taxAdded = Double.parseDouble(taxPercent);
+	    this.tax = taxAdded;
+	}
+	
+	
 	
  }

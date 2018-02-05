@@ -25,7 +25,6 @@ public class QRProductPageLayout extends PageLayout {
 			// Resets the alignments for each column change
 			if (i % 8 == 0) {
 				alignLeft = !alignLeft;
-
 				if (alignLeft) {
 					xPosition = 10;
 				} else {

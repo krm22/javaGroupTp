@@ -15,7 +15,10 @@ public class CsvReader {
 	 * @param csv
 	 * @return
 	 */
+	String products;
+	
 	public static List<Product> csvtoArrayList(File csv) {
+		
 		List<Product> products = new ArrayList<>();
 		
 		String csvLine;
@@ -27,7 +30,10 @@ public class CsvReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		return products;
+	}
+	
+	public String getProducts(){
 		return products;
 	}
 
