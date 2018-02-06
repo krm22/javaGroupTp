@@ -29,7 +29,7 @@ public class ProductPageLayout extends PageLayout {
 			document.add(paraAmountHT(product));
 			document.add(paraTVA(product));
 			document.add(paraTTC(product));
-		}
+		   } 
 	}
 
 	public void rectangle() throws DocumentException, FileNotFoundException {
@@ -118,6 +118,9 @@ public class ProductPageLayout extends PageLayout {
 		ttc.setSpacingBefore(10);
 		return ttc;
     }
+
+
+
 	
 	
 }

@@ -20,7 +20,7 @@ public class QRCard {
 	
 	private static final int textOffsetTop = 40;
 	private static final int textOffsetLeft = 90;
-	//private static final int fontSize = 12;
+	
 	
 	private Product product;
 	private PdfContentByte canvas;

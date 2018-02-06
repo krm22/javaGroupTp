@@ -17,7 +17,7 @@ public class CsvReader {
 	 */
 	String products;
 	
-	public static List<Product> csvtoArrayList(File csv) {
+	public static List<Product> csvtoArrayList(File csv, String tva) {
 		
 		List<Product> products = new ArrayList<>();
 		
@@ -25,7 +25,7 @@ public class CsvReader {
 		try (BufferedReader buffer = new BufferedReader(new FileReader(csv))) {
 			while ((csvLine = buffer.readLine()) != null) {
 				String[] splitData = csvLine.split(";");
-				products.add(new Product(splitData[0], splitData[3], splitData[1], splitData[2], splitData[4]));
+				products.add(new Product(splitData[0], splitData[3], splitData[1], splitData[2], splitData[4], tva));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

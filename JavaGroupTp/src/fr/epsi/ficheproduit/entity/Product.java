@@ -16,12 +16,14 @@ public class Product {
 			String productCatergory,
 			String productName,
 			String productDescription,
-			String productAmountHt){
+			String productAmountHt,
+			String tva){
 				this.productCode = productCode;
-				this.productCatergory = productCatergory;
+				this.setProductCatergory(productCatergory);
 				this.productName = productName;
 				this.productDescription = productDescription;
 				this.productAmountHt = Double.parseDouble(productAmountHt);
+				this.setTax(tva);
 	}
 
 	public String getProductCode() {
@@ -79,7 +81,7 @@ public class Product {
 	
 	public void setTax(String taxPercent){
 		double taxAdded = Double.parseDouble(taxPercent);
-	    this.tax = taxAdded;
+	    tax = taxAdded;
 	}
 	
 	
