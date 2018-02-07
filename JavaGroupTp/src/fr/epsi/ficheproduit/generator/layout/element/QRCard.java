@@ -69,7 +69,7 @@ public class QRCard {
         try {
 			canvas.addImage(qrcodeImage);
 		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 	}
@@ -78,16 +78,16 @@ public class QRCard {
 		try {
 			qrCode();
 		} catch (BadElementException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		try {
 			rectangle();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		}
 		drawProductAttributes();
@@ -100,10 +100,10 @@ public class QRCard {
 		try {
 			canvas.setFontAndSize(BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED), 15);
 		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		canvas.showText(text);

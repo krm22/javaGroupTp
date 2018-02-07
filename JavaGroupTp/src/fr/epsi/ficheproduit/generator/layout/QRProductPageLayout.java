@@ -22,7 +22,6 @@ public class QRProductPageLayout extends PageLayout {
 				document.newPage();
 			}
 
-			// Resets the alignments for each column change
 			if (i % 8 == 0) {
 				alignLeft = !alignLeft;
 				if (alignLeft) {

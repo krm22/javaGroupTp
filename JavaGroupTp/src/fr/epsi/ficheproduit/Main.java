@@ -15,22 +15,23 @@ import fr.epsi.options.OptionsManager;
 
 public class Main {
 	
-	public static void QrCodeMain(String args[]) throws FileNotFoundException, DocumentException{
+	public static void QrCodeMain(String args[]) throws FileNotFoundException, DocumentException {
 		OptionsManager options = new OptionsManager(args);
 		PDFGenerator pdfGenerator = new PDFGenerator(new QRProductPageLayout());
 	    pdfGenerator.createDocument(options.getEtiquette());	    
+	    
+//	    double taxAdded = Double.parseDouble(options.getTva());
+//	    String tva = String.format ("%.2f", taxAdded);
+	    
 		List<Product> products = CsvReader.csvtoArrayList(new File(options.getCsv()), options.getTva());
 		pdfGenerator.render(products);
 	    pdfGenerator.saveDocument();
-	  
 	}
-
- 
+	
 	public static void ProductCodeMain(String args[]) throws DocumentException, FileNotFoundException {
 		OptionsManager options = new OptionsManager(args);
 		PDFGenerator pdfGenerator = new PDFGenerator(new ProductPageLayout());
 	    pdfGenerator.createDocument(options.getFiche());
-	    System.out.println(options.getFiche());
 	    
 		List<Product> products = CsvReader.csvtoArrayList(new File(options.getCsv()), options.getTva());
 	    pdfGenerator.render(products);
@@ -40,6 +41,5 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException, DocumentException {
 		Main.QrCodeMain(args);
 		Main.ProductCodeMain(args);
-		
 	}
 }

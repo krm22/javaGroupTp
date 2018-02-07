@@ -15,12 +15,10 @@ public class CsvReader {
 	 * @param csv
 	 * @return
 	 */
-	String products;
 	
 	public static List<Product> csvtoArrayList(File csv, String tva) {
 		
 		List<Product> products = new ArrayList<>();
-		
 		String csvLine;
 		try (BufferedReader buffer = new BufferedReader(new FileReader(csv))) {
 			while ((csvLine = buffer.readLine()) != null) {
@@ -33,8 +31,4 @@ public class CsvReader {
 		return products;
 	}
 	
-	public String getProducts(){
-		return products;
-	}
-
 }
